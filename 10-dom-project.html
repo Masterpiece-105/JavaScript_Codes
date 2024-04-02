@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/10-dom-project.css">
+    <title>DOM Project</title>
+    
+</head>
+
+<body>
+    <p>YouTube subscribe button</p>
+    <button onclick="
+       subscribe();
+    " class="js-subscribe-button subscribe-button">
+        Subscribe</button>
+
+    <p>Amazone Shiping Calculator</p>
+    <input placeholder="Cost of Order" class="js-cost-input cost-input" onkeydown="
+       handleCostdown(event);
+    " >
+    <button onclick="
+            calculateTotal();
+        " class="calculate-button">Calculate</button>
+    <p class="js-total-cost"></p>
+    <script>
+
+        function handleCostdown(event) {
+            //console.log(event.key);
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+        function calculateTotal() {
+            const inputElement = (document.querySelector('.js-cost-input'));
+            let cost = Number(inputElement.value);  // whenever we take input from Dom convert it into number by using build in method 'Number'
+            // console.log(cost);
+            // console.log(typeof cost);
+
+
+            if (cost < 40) {
+                cost = cost + 10;
+                // console.log(cost);
+            }
+
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+        }
+
+        function subscribe() {
+            const buttonElement = (document.querySelector('.js-subscribe-button'));
+            if (buttonElement.innerText === 'Subscribe') {   // in the plave of innerHTML we are using innerText reason is to solve the extra space is there in button
+                buttonElement.innerHTML = 'Subscribed';
+                buttonElement.classList.add('is-subscribed');
+
+            }
+            else {
+                buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
+            }
+        }   
+    </script>
+</body>
+
+</html>
