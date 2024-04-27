@@ -1,3 +1,0 @@
-# JavaScript_Codes
-Staring Js, 
-Here I m going to maintain my JavaScript learning path and progress...
